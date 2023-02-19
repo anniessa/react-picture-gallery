@@ -4,7 +4,6 @@ function GalleryItem({galleryItem, handleLike}) {
     console.log('in gallery item')
 
     const [display, setDisplay] = useState([]);
-    const [likeText, setLikeText] = useState([]);
  
     const handleClick = () => {
         setDisplay(!display)
@@ -15,13 +14,7 @@ function GalleryItem({galleryItem, handleLike}) {
         handleLike(galleryItem.id);
     }
 
-    const handleLikeText = () => {
-        
 
-    }
-
-
-    
     return(
         <div>
             <>

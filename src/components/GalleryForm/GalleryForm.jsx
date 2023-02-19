@@ -1,18 +1,20 @@
 import { useState } from 'react';
 
-function GalleryForm({galleryList}) {
+
+function GalleryForm({addImage}) {
+    console.log('in gallery form')
     const [newImagePath, setNewImagePath] = useState('');
     const [newImageDesc, setNewImageDesc] = useState('');
 
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
+        
         let newGalleryImage = {
             path: newImagePath,
             description: newImageDesc
         }
-        addNewImage(newGalleryImage, clearInputs);
+        addImage(newGalleryImage, clearInputs);
         clearInputs()
     }
 
