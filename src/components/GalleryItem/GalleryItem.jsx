@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import './GalleryItem.css'
 
 function GalleryItem({galleryItem, handleLike}) {
     console.log('in gallery item')
@@ -16,14 +17,11 @@ function GalleryItem({galleryItem, handleLike}) {
 
 
     return(
-        <div>
-            <>
-            {display ? <img src={galleryItem.path} onClick={handleClick} /> : 
+        <div className='item'>
+            {display ? <img className="image" src={galleryItem.path} onClick={handleClick} /> : 
             <p onClick={handleClick}> {galleryItem.description} </p>}
             <button onClick={likePhoto}> Love it! ❤️‍🔥 </button>
              {galleryItem.likes ? <p>{galleryItem.likes} people love it </p> : <p>No one loves this 😿 </p>} 
-            </>
-
         </div>
     )
     
