@@ -27,6 +27,15 @@ function App() {
       })
   }
 
+  const addImage = (image) => {
+    axios.post('/gallery', image)
+    .then ((response) => {
+      fetchImages();
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+
   // const handleLike = () => {
   //   console.log('in handle like')
   //   for (const galleryItem of galleryItems) {
@@ -43,24 +52,17 @@ function App() {
   //       }
   //     }
 
-  const addImage = (image) => {
-    axios.post('/gallery', image)
-    .then ((response) => {
-      fetchImages();
-    })
-    .catch((error) => {
-      console.error(error)
-    })
+  
   }
       return (
         <div className="App">
           <header className="App-header">
             <h1 className="App-title">Gallery of My Life</h1>
           </header>
-
+          <GalleryForm  addImage={addImage}/>
           <GalleryList
             galleryList={galleryList} />
-          <GalleryForm  addImage={addImage}/>
+          
         </div>
       );
     }

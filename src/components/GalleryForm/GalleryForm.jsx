@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './GalleryForm.css'
 
 
 function GalleryForm({addImage}) {
@@ -21,12 +22,18 @@ function GalleryForm({addImage}) {
     return (
         <>
             <form className="gallery-form">
-                <h3>Add a new image</h3>
                 <div id="input-container">
+                <h3 className="form-header">Add a new image</h3>
                     <label>Image URL</label>
-                    <input onChange={(event) => setNewImagePath(event.target.value)} value={newImagePath} type="text"/>
+                    <input onChange={(event) => setNewImagePath(event.target.value)} 
+                    value={newImagePath} 
+                    type="text"
+                    placeHolder="Enter image URL"/>
                     <label>Image Description</label>
-                    <input onChange={(event) => setNewImageDesc(event.target.value)} value={newImageDesc} type="text"/>
+                    <input onChange={(event) => setNewImageDesc(event.target.value)} 
+                    value={newImageDesc} 
+                    type="text"
+                    placeHolder="Enter image description"/>
                     <button onClick={handleSubmit}>
                         Submit
                     </button>

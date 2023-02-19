@@ -1,0 +1,20 @@
+.gallery-form {
+    margin: 20px;
+    display: flex;
+}
+
+#input-container {
+    flex-direction: column;
+    justify-content: first baseline;
+    width: 150px;
+}
+
+#input-container > * {
+    margin: 2px;
+    text-align: center;
+  }
+
+.form-header {
+    justify-self: auto;
+}
+
