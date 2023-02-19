@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { createTheme } from '@mui/material/styles';
 import axios from 'axios';
 
 import GalleryList from '../GalleryList/GalleryList';
@@ -8,7 +9,17 @@ import GalleryForm from '../GalleryForm/GalleryForm';
 import './App.css';
 
 
+
 function App() {
+
+  let theme = createTheme({
+    palette: {
+      brightGreen: '#33FF57',
+      brightRed: '#FF5733',
+      brightBlue: '#33DBFF',
+      brightPurple: '#BD33FF'
+    },
+  });
 
   const [galleryList, setGalleryList] = useState([]);
 
@@ -45,12 +56,12 @@ function App() {
       .catch((error) => {
         console.error(error);
       });
-    }
+  }
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1 className="App-title">Gallery of Deserts</h1>
+        <h1 className="App-title"> 🏜️ Gallery of Deserts 🏜️ </h1>
       </header>
       <GalleryForm addImage={addImage} />
       <GalleryList

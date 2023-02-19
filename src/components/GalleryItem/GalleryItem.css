@@ -14,5 +14,16 @@
     width: 500px;
 }
 
+.description {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px 10px;
+    width: 500px;
+    height: 200px;
+    text-align: center;
+    position: relative;
+    font-size: 50px;
+}
+
 
 

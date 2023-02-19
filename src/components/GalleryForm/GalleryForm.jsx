@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField'
 import './GalleryForm.css'
 
 
@@ -28,19 +30,26 @@ function GalleryForm({addImage}) {
             <form className="gallery-form">
                 <div id="input-container">
                 <h3 className="form-header">Add a new image</h3>
-                    <label>Image URL</label>
-                    <input onChange={(event) => setNewImagePath(event.target.value)} 
+                    <TextField 
+                    fullWidth
+                    onChange={(event) => setNewImagePath(event.target.value)} 
                     value={newImagePath} 
-                    type="text"
-                    placeholder="Enter image URL"/>
-                    <label>Image Description</label>
-                    <input onChange={(event) => setNewImageDesc(event.target.value)} 
-                    value={newImageDesc} 
-                    type="text"
-                    placeholder="Enter image description"/>
-                    <button onClick={handleSubmit}>
+                    label="Enter image URL"
+                    variant="outlined"
+                    />
+                    <TextField 
+                    fullWidth
+                    onChange={(event) => setNewImageDesc(event.target.value)} 
+                    value={newImageDesc}
+                    label="Enter image description"
+                    variant="outlined"/>
+                    <Button 
+                    className="submit-btn"
+                    onClick={handleSubmit} 
+                    variant="contained"
+                    >
                         Submit
-                    </button>
+                    </Button>
                 </div>
             </form>
 
