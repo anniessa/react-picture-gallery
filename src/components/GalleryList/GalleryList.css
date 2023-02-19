@@ -1,0 +1,14 @@
+#list-container {
+    margin: 20px;
+    width: 100%;
+}
+
+#list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#list-header {
+    margin: 0px 20px;
+    display: flex;
+}

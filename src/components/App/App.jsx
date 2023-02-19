@@ -1,14 +1,14 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import GalleryList from '../GalleryList/GalleryList';
+import GalleryForm from '../GalleryForm/GalleryForm';
 
 import './App.css';
 
 
 function App() {
-
 
   const [galleryList, setGalleryList] = useState([]);
 
@@ -17,38 +17,52 @@ function App() {
   }, []);
 
   const fetchImages = () => {
+    console.log('in fetch images')
     axios.get('/gallery')
-    .then((response) => {
-      console.log(galleryList)
-      setGalleryList(response.data);
-    })
-    .catch((error) => {
-      alert('error getting gallery list')
-    })
+      .then((response) => {
+        setGalleryList(response.data);
+      })
+      .catch((error) => {
+        alert('error getting gallery list')
+      })
   }
 
-  const handleLike = (id) => {
-    axios
-    .put(`/gallery/like/${id}`)
-    .then(() => {
+  // const handleLike = () => {
+  //   console.log('in handle like')
+  //   for (const galleryItem of galleryItems) {
+  //     if (galleryItem.id == galleryId) {
+  //       galleryItem.likes += 1;
+  //       axios
+  //         .put(`/gallery/like/${id}`)
+  //         .then(() => {
+  //           fetchImages();
+  //         })
+  //         .catch((error) => {
+  //           console.error(error);
+  //         })
+  //       }
+  //     }
+
+  const addImage = (image) => {
+    axios.post('/gallery', image)
+    .then ((response) => {
       fetchImages();
     })
     .catch((error) => {
-      console.error(error);
+      console.error(error)
     })
-}
+  }
+      return (
+        <div className="App">
+          <header className="App-header">
+            <h1 className="App-title">Gallery of My Life</h1>
+          </header>
 
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Gallery of My Life</h1>
-        </header>
-        
-        <GalleryList 
-        galleryList={galleryList}
-        handleLike={handleLike}/>
-      </div>
-    );
-}
+          <GalleryList
+            galleryList={galleryList} />
+          <GalleryForm  addImage={addImage}/>
+        </div>
+      );
+    }
 
-export default App;
+  export default App;
