@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 import GalleryList from '../GalleryList/GalleryList';
+import GalleryForm from '../GalleryForm/GalleryForm';
 
 import './App.css';
 
@@ -38,15 +39,23 @@ function App() {
     })
 }
 
+const addImage = (galleryItem) => {
+  axios.post('/gallery', galleryItem)
+  .then ((response) => {
+    fetchImages();
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+}
+
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Gallery of My Life</h1>
+          <h1 className="App-title">Gallery of Deserts</h1>
         </header>
-        
-        <GalleryList 
-        galleryList={galleryList}
-        handleLike={handleLike}/>
+        <GalleryList galleryList={galleryList} handleLike={handleLike}/>
+        <GalleryForm addImage={addImage} />
       </div>
     );
 }
