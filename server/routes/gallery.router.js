@@ -9,21 +9,20 @@ const pool = require('../modules/pool.js');
 router.put('/like/:id', (req, res) => {
     console.log(req.params);
     const galleryId = req.params.id;
-    const likedImage = req.body;
-    const sqlText = `UPDATE gallery SET likes=$1 WHERE id=$2`;
-    pool.query(sqlText, [likedImage.likes, galleryId])
+    const sqlText = `UPDATE gallery SET "likes"="likes"+1 WHERE "id"=$1`;
+    pool.query(sqlText, [galleryId])
     .then((result) => {
         res.sendStatus(204);
     })
     .catch((error) => {
         console.log(`Error making database query ${sqlText}`, error);
-        res.sendStuat(500);
+        res.sendStatus(500);
     });
 }); // END PUT Route
 
 // GET Route
 router.get('/', (req, res) => {
-    const sqlText = `SELECT * FROM gallery;`
+    const sqlText = `SELECT * FROM gallery ORDER BY id DESC;`
     pool.query(sqlText)
     .then((result) => {
     res.send(result.rows);
@@ -38,13 +37,15 @@ router.get('/', (req, res) => {
 //POST
 router.post('/', (req, res) => {
     const galleryItem = req.body;
-    const sqlText = `INSERT INTO gallery ("path", "description", "likes")
-    VALUES ($1, $2, $3)`;
-    pool.query(sqlText, [galleryItem.path, galleryItem.description, galleryItem.likes])
+    console.log(galleryItem)
+    const sqlText = `INSERT INTO gallery ("path", "description")
+    VALUES ($1, $2);`;
+    pool.query(sqlText, [galleryItem.path, galleryItem.description])
     .then((dbRes) => {
         res.sendStatus(201);
     })
     .catch((error) => {
+        console.log(error);
         res.sendStatus(500);
     });
 })
