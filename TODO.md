@@ -9,11 +9,11 @@
 []App.jsx
 [x]Use `axios` to retrieve (`GET`) data from to `/gallery` and store it in `App.jsx`.
 
-[]GalleryList.jsx
+[x]GalleryList.jsx
 
-[] Create a new **component** for the `GalleryList` and pass it the gallery data stored in `App` via `props`.
-[] Iterate (loop over) the list of gallery data
-[] Make GalleryItems
+[x] Create a new **component** for the `GalleryList` and pass it the gallery data stored in `App` via `props`.
+[x] Iterate (loop over) the list of gallery data
+[x] Make GalleryItems
 
 
 []GalleryItem.jsx
@@ -24,6 +24,10 @@
 - When the like button is clicked, use `Axios` to update (`PUT`) the like count `/gallery/like/:id`.
 - Update the gallery each time a like button is clicked.
 
+
+
+href images replace src in img tag
+path value is 
 
 
 

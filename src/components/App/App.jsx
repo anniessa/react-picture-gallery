@@ -26,13 +26,27 @@ function App() {
       alert('error getting gallery list')
     })
   }
+
+  const handleLike = (id) => {
+    axios
+    .put(`/gallery/like/${id}`)
+    .then(() => {
+      fetchImages();
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+}
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
-        <p>Gallery List</p>
-        <GalleryList galleryList={galleryList} />
+        
+        <GalleryList 
+        galleryList={galleryList}
+        handleLike={handleLike}/>
       </div>
     );
 }
