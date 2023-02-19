@@ -17,7 +17,6 @@ function App() {
   }, []);
 
   const fetchImages = () => {
-    console.log('in fetch images')
     axios.get('/gallery')
       .then((response) => {
         setGalleryList(response.data);
@@ -29,42 +28,37 @@ function App() {
 
   const addImage = (image) => {
     axios.post('/gallery', image)
-    .then ((response) => {
-      fetchImages();
-    })
-    .catch((error) => {
-      console.error(error)
-    })
-
-  // const handleLike = () => {
-  //   console.log('in handle like')
-  //   for (const galleryItem of galleryItems) {
-  //     if (galleryItem.id == galleryId) {
-  //       galleryItem.likes += 1;
-  //       axios
-  //         .put(`/gallery/like/${id}`)
-  //         .then(() => {
-  //           fetchImages();
-  //         })
-  //         .catch((error) => {
-  //           console.error(error);
-  //         })
-  //       }
-  //     }
-
-  
+      .then((response) => {
+        fetchImages();
+      })
+      .catch((error) => {
+        console.error(error)
+      })
   }
-      return (
-        <div className="App">
-          <header className="App-header">
-            <h1 className="App-title">Gallery of My Life</h1>
-          </header>
-          <GalleryForm  addImage={addImage}/>
-          <GalleryList
-            galleryList={galleryList} />
-          
-        </div>
-      );
+
+  const handleLike = (id) => {
+    axios
+      .put(`/gallery/like/${id}`)
+      .then(() => {
+        fetchImages();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     }
 
-  export default App;
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1 className="App-title">Gallery of Deserts</h1>
+      </header>
+      <GalleryForm addImage={addImage} />
+      <GalleryList
+        galleryList={galleryList} handleLike={handleLike} />
+
+    </div>
+  );
+}
+
+
+export default App;

@@ -1,30 +1,27 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import './GalleryItem.css'
 
-function GalleryItem({galleryItem, handleLike}) {
-    console.log('in gallery item')
+function GalleryItem({ galleryItem, handleLike }) {
 
     const [display, setDisplay] = useState([]);
- 
+
     const handleClick = () => {
         setDisplay(!display)
-        console.log('clicked'); 
-      };
+    };
 
     const likePhoto = () => {
-        handleLike(galleryItem.id);
-    }
+        handleLike(galleryItem.id, galleryItem.likes);
+    };
 
-
-    return(
+    return (
         <div className='item'>
-            {display ? <img className="image" src={galleryItem.path} onClick={handleClick} /> : 
-            <p onClick={handleClick}> {galleryItem.description} </p>}
+            {display ? <img className="image" src={galleryItem.path} onClick={handleClick} /> :
+                <p onClick={handleClick}> {galleryItem.description} </p>}
             <button onClick={likePhoto}> Love it! ❤️‍🔥 </button>
-             {galleryItem.likes ? <p>{galleryItem.likes} people love it </p> : <p>No one loves this 😿 </p>} 
+            {galleryItem.likes ? <p>{galleryItem.likes} people love it </p> : <p>No one loves this 😿 </p>}
         </div>
     )
-    
-}
+
+};
 
 export default GalleryItem;

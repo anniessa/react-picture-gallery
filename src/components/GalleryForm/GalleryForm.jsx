@@ -3,7 +3,6 @@ import './GalleryForm.css'
 
 
 function GalleryForm({addImage}) {
-    console.log('in gallery form')
     const [newImagePath, setNewImagePath] = useState('');
     const [newImageDesc, setNewImageDesc] = useState('');
 
@@ -15,8 +14,13 @@ function GalleryForm({addImage}) {
             path: newImagePath,
             description: newImageDesc
         }
-        addImage(newGalleryImage, clearInputs);
-        clearInputs()
+        addImage(newGalleryImage);
+        clearInputs();
+    }
+
+    const clearInputs = () => {
+        setNewImagePath('');
+        setNewImageDesc('');
     }
 
     return (
@@ -28,12 +32,12 @@ function GalleryForm({addImage}) {
                     <input onChange={(event) => setNewImagePath(event.target.value)} 
                     value={newImagePath} 
                     type="text"
-                    placeHolder="Enter image URL"/>
+                    placeholder="Enter image URL"/>
                     <label>Image Description</label>
                     <input onChange={(event) => setNewImageDesc(event.target.value)} 
                     value={newImageDesc} 
                     type="text"
-                    placeHolder="Enter image description"/>
+                    placeholder="Enter image description"/>
                     <button onClick={handleSubmit}>
                         Submit
                     </button>
