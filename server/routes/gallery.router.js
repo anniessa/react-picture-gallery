@@ -21,4 +21,20 @@ router.get('/', (req, res) => {
     res.send(galleryItems);
 }); // END GET Route
 
+//POST Route
+router.post('/', (req, res) => {
+    const galleryItem = req.body;
+    const sqlText = `INSERT INTO gallery ("path", "description", "likes")
+    VALUES ($1, $2, $3)`;
+    pool.query(sqlText, [galleryItem.path, galleryItem.description, galleryItem.likes])
+    .then((dbRes) => {
+        res.sendStatus(201);
+    })
+    .catch((error) => {
+        console.error(error)
+        res.sendStatus(500);
+    })
+})
+
+
 module.exports = router;
