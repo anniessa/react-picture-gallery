@@ -3,7 +3,6 @@ import "./GalleryList.css";
 
 
 function GalleryList({ galleryList, handleLike }) {
-    console.log(galleryList)
 
     return (
         <div id="list-container">
