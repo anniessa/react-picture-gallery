@@ -5,16 +5,20 @@
 
 #input-container {
     flex-direction: column;
-    justify-content: first baseline;
-    width: 150px;
+    width: 250px;
 }
 
 #input-container > * {
-    margin: 2px;
+    margin: 5px;
     text-align: center;
   }
 
 .form-header {
-    justify-self: auto;
+    justify-self: center;
 }
+
+#image-url {
+    margin: 5px;
+}
+
 
